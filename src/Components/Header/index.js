@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
 // import { Container, Row, Col } from 'react-bootstrap'
 
 
@@ -7,12 +7,26 @@ function Header() {
     return (
         <Container>
             <h1>Header</h1>
-            <Row>
-                <Col>1 of 3</Col>
-                <Col xs={6}>2 of 3 (wider)</Col>
-                <Col>3 of 3</Col>
-            </Row>
-        </Container>
+            <Form>
+                <Row >
+                    <Form.Group className="mb-3 col-2" controlId="formBasicEmail">
+                        <Form.Label>CPF</Form.Label>
+                        <Form.Control type="text" placeholder="Digite CPF" />
+                        <Form.Text className="text-muted">
+                            We'll never share your email with anyone else.
+                        </Form.Text>
+                    </Form.Group>
+
+                    <Form.Group className="mb-3 col" controlId="formBasicPassword">
+                        <Form.Label>Nome</Form.Label>
+                        <Form.Control type="text" placeholder="nome" />
+                    </Form.Group>
+                    
+                    <Button variant="primary" type="submit">
+                        Submit
+                    </Button>
+                </Row>
+            </Form>        </Container>
     )
 }
 
