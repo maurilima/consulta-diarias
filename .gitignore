@@ -5,6 +5,7 @@
 /.pnp
 /src/config
 .pnp.js
+/src/libs/urlApi.js
 
 # testing
 /coverage
