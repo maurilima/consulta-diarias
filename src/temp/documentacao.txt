@@ -1,0 +1,11 @@
+Desenvolver um relatório que liste as diárias concedidas : 
+   A PESQUISA DOS ATRIBUTOS - NÃO OBRIGATÓRIOS DIÁRIAS.xls
+
+
+   
+Consultar por:
+Exercício
+Período da Consulta : Data Início e Data Fim;
+Unidade Orçamentária :
+Partes do Nome:
+CPF:
