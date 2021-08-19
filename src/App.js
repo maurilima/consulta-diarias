@@ -8,7 +8,7 @@ function App() {
   return (
     <Container>
       <Header />
-      <GridDiaria />
+      {/* <GridDiaria /> */}
 
     </Container>
   );
