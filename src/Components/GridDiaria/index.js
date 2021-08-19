@@ -23,6 +23,16 @@ const columnsName = [
         sortable: true
     },
     {
+        name: 'V.RECEBIDO',
+        selector: 'valor',
+        sortable: true,
+    },
+    {
+        name: 'ORGÂO',
+        selector: 'descUnidadeOrcamentaria',
+        sortable: true,
+    },
+    {
         name: 'MATRICULA',
         selector: 'matricula',
         sortable: true
@@ -52,14 +62,12 @@ const columnsName = [
         name: 'D.CONC.',
         selector: 'quantidadeDiarias',
         sortable: true
-    },
-    {
-        name: 'V.RECEBIDO',
-        selector: 'valor',
-        sortable: true,
     }
+    
 
 
+
+    
 ]
 
 

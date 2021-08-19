@@ -8,25 +8,25 @@ function Header() {
         <Container>
             <h1>Header</h1>
             <Form>
-                <Row >
-                    <Form.Group className="mb-3 col-2" controlId="formBasicEmail">
+                <Row xs={12} sm={2} md={2} lg={4} >
+                    <Form.Group className="mb-3" controlId="formCpf">
                         <Form.Label>CPF</Form.Label>
                         <Form.Control type="text" placeholder="Digite CPF" />
-                        <Form.Text className="text-muted">
-                            We'll never share your email with anyone else.
-                        </Form.Text>
                     </Form.Group>
-
-                    <Form.Group className="mb-3 col" controlId="formBasicPassword">
+                    <Form.Group className="mb-3 " controlId="formNome">
                         <Form.Label>Nome</Form.Label>
                         <Form.Control type="text" placeholder="nome" />
                     </Form.Group>
-                    
-                    <Button variant="primary" type="submit">
-                        Submit
-                    </Button>
+                    <Form.Group className="mb-3 " controlId="formExercicio">
+                        <Form.Label>Exercicio</Form.Label>
+                        <Form.Control type="number" placeholder="exercico" />
+                    </Form.Group>
                 </Row>
-            </Form>        </Container>
+                <Button variant="primary" type="submit">
+                    Submit
+                </Button>
+            </Form>
+        </Container>
     )
 }
 
