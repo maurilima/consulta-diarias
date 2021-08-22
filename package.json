@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.12.3",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -11,6 +12,7 @@
     "react-bootstrap": "^2.0.0-beta.4",
     "react-data-table-component": "^6.11.8",
     "react-dom": "^17.0.2",
+    "react-hook-form": "^7.12.2",
     "react-scripts": "^4.0.3",
     "styled-components": "^5.3.0",
     "web-vitals": "^1.0.1"
@@ -20,7 +22,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "json-server -p 3333 -d 1000 pesquisa.json"
+    "server": "json-server -p 3333 -d 3000 pesquisa.json"
   },
   "eslintConfig": {
     "extends": [

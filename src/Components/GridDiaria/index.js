@@ -1,6 +1,7 @@
 import React from 'react';
 import DataTable from 'react-data-table-component';
-import { dataDiarias } from '../../temp/datapesquisa';
+import reactDom from 'react-dom';
+
 
 
 
@@ -15,22 +16,26 @@ const columnsName = [
     {
         name: 'NOME',
         selector: 'nomeCredor',
-        sortable: true
+        sortable: true,
+        grow: 2
     },
     {
         name: 'CARGO',
         selector: 'cargo',
-        sortable: true
+        sortable: true,
+        grow: 2
     },
     {
         name: 'V.RECEBIDO',
         selector: 'valor',
         sortable: true,
+        right : true
     },
     {
         name: 'ORGÂO',
         selector: 'descUnidadeOrcamentaria',
         sortable: true,
+        grow: 2
     },
     {
         name: 'MATRICULA',
@@ -70,16 +75,20 @@ const columnsName = [
     
 ]
 
+function GridDiaria(data) {
 
-function GridDiaria() {
+reactDom.render(
+    <RenderGridDiaria  />, document.getElementById('grid-diarias')
+);
 
+
+function RenderGridDiaria() {
     return (
-
-        <div className="App">
+        <div className="RenderGridDiaria">
             <div className="table-responsive">
                 <DataTable
                     columns={columnsName}
-                    data={dataDiarias}
+                    data={data}
                     title='Diarias concedidas'
                     pagination
                     striped true
@@ -89,6 +98,7 @@ function GridDiaria() {
             </div>
         </div>
     )
+}
 }
 
 export default GridDiaria
