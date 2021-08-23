@@ -8,8 +8,10 @@ import { listUO } from '../../libs/UO'
 import { useForm } from "react-hook-form";
 import GridDiaria from "../GridDiaria";
 import { getApiEndPointSimple } from "../../libs/getApiEndPointSimple";
-import { clearData } from "../../libs/lib";
-import CircularIndeterminate from "../../libs/Progress";
+import { clearData, disableEnableSpinner } from "../../libs/lib";
+import { ProgressCircle } from "../../libs/Progress";
+
+let ProgressCreated = false;
 
 
 
@@ -18,14 +20,19 @@ function Header() {
     const onSubmit = data => { prepareData() }
 
     async function prepareData() {
-        CircularIndeterminate()
+        if (!ProgressCreated ) { 
+           ProgressCircle();
+           ProgressCreated = true
+         }
+        else { disableEnableSpinner('block')}
+
         let resultData = await getApiEndPointSimple('http://localhost:3333/pesquisa');
         resultData = clearData(resultData)
         GridDiaria(resultData);
+        disableEnableSpinner('none')
 
     }
 
- 
     return (
         <Container>
             <h1>Header</h1>
@@ -78,6 +85,8 @@ function Header() {
                     Consultar
                 </Button>
             </Form>
+            <Row  id='progress' className="progressIndicator">
+            </Row>   
             <Row>
                 <div className='GridDiaria' id='grid-diarias'></div>
             </Row>

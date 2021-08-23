@@ -1,23 +1,18 @@
-// import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React from 'react';
+import reactDom from 'react-dom';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    '& > * + *': {
-      marginLeft: theme.spacing(2),
-    },
-  },
-}));
+export function ProgressCircle() {
+    reactDom.render(
+        <ProgressIndicador  />, document.getElementById('progress')
+    );
 
-export default function CircularIndeterminate() {
-  const classes = useStyles();
+function ProgressIndicador() {
 
-  return (
-    <div className={classes.root}>
-      <CircularProgress />
-      <CircularProgress color="secondary" />
+    return (
+    <div className='progressIndicator'>
+      <CircularProgress color="primary" />
     </div>
   );
+}
 }

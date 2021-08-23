@@ -2,6 +2,11 @@
 // import Swal from 'sweetalert2/dist/sweetalert2.js' 
 
 
+export function disableEnableSpinner(value){
+  document.getElementById('progress').style.display = value;
+}
+
+
 export function clearData(data) {
   const localData = data.map(item => {
     return {
