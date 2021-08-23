@@ -18,13 +18,12 @@ headerAuth.append("cookie", "SERVERID=A",);
 
 export async function getApiEndPoint(raw, endPoint) {
     var queryString = Object.keys(raw)
-           .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(raw[key])}`)
-           .join('&')
+                            .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(raw[key])}`)
+                            .join('&')
     var requestOptions = {
         method: 'GET',
         mode: 'cors',
         cache: 'no-cache',
-        
         headers: headerAuth,
     };
 

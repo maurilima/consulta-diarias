@@ -2,11 +2,10 @@ import * as React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css'
 
-
+import GridDiaria from "../GridDiaria";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { listUO } from '../../libs/UO'
 import { useForm } from "react-hook-form";
-import GridDiaria from "../GridDiaria";
 import { getApiEndPointSimple } from "../../libs/getApiEndPointSimple";
 import { clearData, disableEnableSpinner } from "../../libs/lib";
 import { ProgressCircle } from "../../libs/Progress";
@@ -16,7 +15,7 @@ let progressCreated = false;
 
 
 function Header() {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit  } = useForm();
     const onSubmit = data => { prepareData() }
 
     async function prepareData() {
