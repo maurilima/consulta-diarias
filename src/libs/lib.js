@@ -23,7 +23,7 @@ export function clearData(data) {
 
     }
   })
-  console.log(localData)
+  // console.log(localData)
   return localData;
 
 

@@ -11,7 +11,7 @@ import { getApiEndPointSimple } from "../../libs/getApiEndPointSimple";
 import { clearData, disableEnableSpinner } from "../../libs/lib";
 import { ProgressCircle } from "../../libs/Progress";
 
-let ProgressCreated = false;
+let progressCreated = false;
 
 
 
@@ -20,9 +20,9 @@ function Header() {
     const onSubmit = data => { prepareData() }
 
     async function prepareData() {
-        if (!ProgressCreated ) { 
+        if (!progressCreated ) { 
            ProgressCircle();
-           ProgressCreated = true
+           progressCreated = true
          }
         else { disableEnableSpinner('block')}
 
