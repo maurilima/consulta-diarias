@@ -5,7 +5,7 @@ import { getAuthKey } from "./getApiKey.js";
 
 // diarias/totais-diarias-por-secretaria-por-exercicio?exercicio=2018&limiteDeRegistros=15';
 
-let headerAuth = new Headers;
+let headerAuth = new Headers();
 let apiKey = await getAuthKey();
 let auth = 'Bearer ' + apiKey.access_token;
 headerAuth.append('Accept', 'application/json');
