@@ -8,3 +8,17 @@ select {
     align-items: center;
     justify-content: center;
 }
+
+@media (max-width: 1080px) {
+    html {
+        font-size: 93.75%;  /* 15px */
+    }
+    
+}
+
+@media (max-width: 720px) {
+    html {
+        font-size: 87.75%;  /* 15px */
+    }
+    
+}

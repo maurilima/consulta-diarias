@@ -2,32 +2,46 @@ import * as React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css'
 
-import GridDiaria from "../GridDiaria";
+// import GridDiaria from "../GridDiaria";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { listUO } from '../../libs/UO'
 import { useForm } from "react-hook-form";
-import { getApiEndPointSimple } from "../../libs/getApiEndPointSimple";
+// import { getApiEndPointSimple } from "../../libs/getApiEndPointSimple";
 import { clearData, disableEnableSpinner } from "../../libs/lib";
 import { ProgressCircle } from "../../libs/Progress";
+
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
+
+
+
+
+const schema = yup.object().shape({
+    exercicio: yup.number("Deve Ser Numero").required("Exercicio e Requerido")
+});
+
 
 let progressCreated = false;
 
 
 
 function Header() {
-    const { register, handleSubmit  } = useForm();
-    const onSubmit = data => { prepareData() }
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        resolver: yupResolver(schema)
+    });
+    const onSubmit = data => { prepareData(data) }
 
-    async function prepareData() {
-        if (!progressCreated ) { 
-           ProgressCircle();
-           progressCreated = true
-         }
-        else { disableEnableSpinner('block')}
+    async function prepareData(data) {
+        if (!progressCreated) {
+            ProgressCircle();
+            progressCreated = true
+        }
+        else { disableEnableSpinner('block') }
 
-        let resultData = await getApiEndPointSimple('http://localhost:3333/pesquisa');
-        resultData = clearData(resultData)
-        GridDiaria(resultData);
+        // let resultData = await getApiEndPointSimple('http://localhost:3333/pesquisa');
+        // resultData = clearData(resultData)
+        // GridDiaria(resultData);
+        console.log(data)
         disableEnableSpinner('none')
 
     }
@@ -40,39 +54,44 @@ function Header() {
                     <Col xl={2} lg={3} md={3} sm={4} >
                         <Form.Group className="mb-3" controlId="formCpf">
                             <Form.Label>CPF</Form.Label>
-                            <Form.Control type="text" placeholder="Digite CPF" {...register('cpf')} />
+                            <Form.Control type="text" placeholder="Digite CPF" {...register("cpf")} />
                         </Form.Group>
                     </Col>
                     <Col xl={5} lg={5} md={6} sm={8} >
                         <Form.Group className="mb-3 " controlId="formNome">
                             <Form.Label>Nome</Form.Label>
-                            <Form.Control type="text" placeholder="nome" {...register('nome')} />
+                            <Form.Control type="text" placeholder="nome"  {...register("nome")} />
                         </Form.Group>
                     </Col>
                     <Col xl={2} lg={3} md={3} sm={4} >
                         <Form.Group className="mb-3 " controlId="formExercicio">
                             <Form.Label>Exercicio</Form.Label>
-                            <Form.Control type="number" placeholder="exercico" {...register('exercicio')} />
+                            <input 
+                            //    type="number" 
+                                // defaultValue={0}
+                               placeholder="exercicio" 
+                               {...register("exercicio")} />
                         </Form.Group>
+                        {errors.exercicio && <p>{errors.exercicio.message}</p>}
                     </Col>
                 </Row>
                 <Row>
                     <Col xl={3} lg={3} md={3} sm={5} >
                         <Form.Group className="mb-3" controlId="dataInicio">
                             <Form.Label>Data Inicial</Form.Label>
-                            <Form.Control type="date" {...register('dataInicio')} />
+                            <Form.Control type="date" {...register("dataInicio")} />
                         </Form.Group>
                     </Col>
                     <Col xl={3} lg={3} md={3} sm={5} >
                         <Form.Group className="mb-2" controlId="dataFim"  >
                             <Form.Label>Data Final</Form.Label>
-                            <Form.Control type="date" {...register('dataFinal')} />
+                            <Form.Control type="date" {...register("dataFim")} />
                         </Form.Group>
                     </Col>
                     <Col lg={5} md={8} sm={9} xl={4} xxl={4} >
                         <Form.Group className="mb-3" controlId="formCpf">
                             <Form.Label>Unidade Orçamentária</Form.Label>
-                            <select className="form-select form-select-sm mb-3" {...register('UO')}>
+                            <select className="form-select form-select-sm mb-3" {...register("UO")}>
                                 <option defaultValue value>Selecione Unidade </option>
                                 {listUO.map(uo => <option key={uo.codigo} value={uo.codigo} >{uo.descricao}</option>)}
                             </select>
@@ -84,8 +103,8 @@ function Header() {
                     Consultar
                 </Button>
             </Form>
-            <Row  id='progress' className="progressIndicator">
-            </Row>   
+            <Row id='progress' className="progressIndicator">
+            </Row>
             <Row>
                 <div className='GridDiaria' id='grid-diarias'></div>
             </Row>
