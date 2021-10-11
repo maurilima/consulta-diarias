@@ -1,22 +1,19 @@
 
-import { BASE_URL } from "../libs/urlApi.js";
-import { getAuthKey } from "./getApiKey.js";
+import { BASE_URL } from "../config/urlApi";
+import { getAuthKey } from "./getApiKey";
 
 
-// diarias/totais-diarias-por-secretaria-por-exercicio?exercicio=2018&limiteDeRegistros=15';
 
-let headerAuth = new Headers();
-let apiKey = await getAuthKey();
-let auth = 'Bearer ' + apiKey.access_token;
-headerAuth.append('Accept', 'application/json');
+export async  function getApiEndPoint(raw, endPoint) {
+    
+    let apiKey =  await getAuthKey();
+    
+    let headerAuth = new Headers();
+    let auth = 'Bearer ' + apiKey.access_token;
 
-headerAuth.append('Authorization', auth);
+    headerAuth.append('Accept', 'application/json');
+    headerAuth.append('Authorization', auth);
 
-// headerAuth.append('pragma', 'no-cache');
-headerAuth.append("cookie", "SERVERID=A",);
-
-
-export async function getApiEndPoint(raw, endPoint) {
     var queryString = Object.keys(raw)
                             .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(raw[key])}`)
                             .join('&')
@@ -36,4 +33,6 @@ export async function getApiEndPoint(raw, endPoint) {
     }
 }
 
+
+export default getApiEndPoint
 

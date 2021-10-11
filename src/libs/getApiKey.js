@@ -1,7 +1,7 @@
-import { AUTH, BASE_AUTH } from "../config/Config.js";
-import { BASE_URL } from "../libs/urlApi.js";
+import { AUTH, BASE_AUTH } from "../config/Config";
+import { BASE_URL } from "../config/urlApi";
 
-let headerAuth = new Headers;
+let headerAuth = new Headers();
 
 headerAuth.append('Accept', 'application/json');
 headerAuth.append('Authorization', AUTH );

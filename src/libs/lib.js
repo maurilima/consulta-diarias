@@ -8,6 +8,8 @@ export function disableEnableSpinner(value){
 
 
 export function clearData(data) {
+  console.log(data)
+
   const localData = data.map(item => {
     return {
       nomeCredor : item.nomeCredor,
