@@ -9,7 +9,7 @@ import { URL_DP } from '../../config/urlApi';
 
 
 let progressCreated = false;
-// let data = [];
+let data = [];
 let dados = [];
 
 
@@ -29,27 +29,10 @@ const columnsName = [
         grow: 2
     },
     {
-        name: 'CARGO',
-        selector: 'cargo',
+        name: 'DESTINO',
+        selector: 'localidade',
         sortable: true,
         grow: 2
-    },
-    {
-        name: 'V.RECEBIDO',
-        selector: 'valor',
-        sortable: true,
-        right : true
-    },
-    {
-        name: 'ORGÂO',
-        selector: 'descUnidadeOrcamentaria',
-        sortable: true,
-        grow: 2
-    },
-    {
-        name: 'MATRICULA',
-        selector: 'matricula',
-        sortable: true
     },
     {
         name: 'SAIDA',
@@ -59,24 +42,47 @@ const columnsName = [
     {
         name: 'RETORNO',
         selector: 'dataRetorno',
+        sortable: true,
+        right: true
+    },
+
+    {
+        name: 'TOTAL CONC.',
+        selector: 'quantidadeDiarias',
         sortable: true
     },
+    {
+        name: 'TOTAL RECEBIDO',
+        selector: 'valor',
+        sortable: true,
+        right : true
+    },
+    // {
+    //     name: 'MATRICULA',
+    //     selector: 'matricula',
+    //     sortable: true
+    // },
     {
         name: 'FINALIDADE',
         selector: 'motivo',
         sortable: true,
-        grow: 3
+        wrap: true,
+        grow: 4
     },
     {
-        name: 'DESTINO',
-        selector: 'localidade',
-        sortable: true
+        name: 'ORGÂO',
+        selector: 'descUnidadeOrcamentaria',
+        sortable: true,
+        grow: 2
     },
     {
-        name: 'D.CONC.',
-        selector: 'quantidadeDiarias',
-        sortable: true
-    }
+        name: 'CARGO',
+        selector: 'cargo',
+        sortable: true,
+        grow: 2
+    },
+
+    
     
 
 
@@ -107,16 +113,16 @@ async function fetchDiaria(raw, page = 0) {
 
 
 async function GridDiaria(raw) {
-    const  [data, setData] = useState([]);
+    // const  [data, setData] = useState([]);
     // const [loading, setLoading] = useState(false);
     
 
     dados = await fetchDiaria(raw);
 
-    dados = clearData(dados.content)
+    data = clearData(dados.content)
     // setTotalRows(dados.totalElements)
 
-    setData(dados)
+    // setData(dados)
    console.log (data) 
 
 
