@@ -9,7 +9,7 @@ import { URL_DP } from '../../config/urlApi';
 
 
 let progressCreated = false;
-let data = [];
+// let data = [];
 let dados = [];
 
 
@@ -107,16 +107,16 @@ async function fetchDiaria(raw, page = 0) {
 
 
 async function GridDiaria(raw) {
-    // const  [data, setData] = useState([]);
+    const  [data, setData] = useState([]);
     // const [loading, setLoading] = useState(false);
     
 
     dados = await fetchDiaria(raw);
 
-    data = clearData(dados.content)
+    dados = clearData(dados.content)
     // setTotalRows(dados.totalElements)
 
-    // setData(dados)
+    setData(dados)
    console.log (data) 
 
 
@@ -127,6 +127,7 @@ reactDom.render(
 
 
 function RenderGridDiaria() {
+
     return (
         <div className="RenderGridDiaria">
             <div className="table-responsive">
