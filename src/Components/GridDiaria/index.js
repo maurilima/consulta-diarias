@@ -26,12 +26,14 @@ const columnsName = [
         name: 'NOME',
         selector: 'nomeCredor',
         sortable: true,
+        wrap: true,
         grow: 2
     },
     {
         name: 'DESTINO',
         selector: 'localidade',
         sortable: true,
+        wrap: true,
         grow: 2
     },
     {
@@ -73,20 +75,16 @@ const columnsName = [
         name: 'ORGÂO',
         selector: 'descUnidadeOrcamentaria',
         sortable: true,
+        wrap: true,
         grow: 2
     },
     {
         name: 'CARGO',
         selector: 'cargo',
         sortable: true,
+        wrap: true,
         grow: 2
     },
-
-    
-    
-
-
-
     
 ]
 
@@ -143,8 +141,6 @@ function RenderGridDiaria() {
                     title='Diarias concedidas'
                     pagination
                     striped true
-                    rowsPerPage={20}
-                 
                     paginationComponentOptions={paginationOptions}
                     fixedHeader
                 />
