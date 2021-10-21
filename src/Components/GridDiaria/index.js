@@ -139,7 +139,7 @@ async function GridDiaria(raw) {
 
     dados = await fetchDiaria(raw);
 
-    dados = clearData(dados.content)
+    data = clearData(dados.content)
     // setTotalRows(dados.totalElements)
 
     // setData(dados)
@@ -147,13 +147,13 @@ async function GridDiaria(raw) {
 
 
 reactDom.render(
-    <RenderGridDiaria  data ={dados} />, 
+    <RenderGridDiaria />, 
     document.getElementById('grid-diarias')
 );
 
 
 
-function RenderGridDiaria(props) {
+function RenderGridDiaria() {
     // const  [data, setData] = useState([]);
 
     // setData(props.data)

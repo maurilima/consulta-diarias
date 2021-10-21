@@ -5,37 +5,23 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import { listUO } from '../../libs/UO'
 import { useForm } from "react-hook-form";
 import GridDiaria from "../GridDiaria";
-// import Remote from "../../temp/NovoTeste";
-// import ValidarApi from "../../temp/ValidarApi/ValidarApi";
 
-let raw ={};
-// const schema = yup.object().shape({
-//     // exercicio : yup.number("Deve Ser Numero"),
-//     // dataInicio: yup.date(),
-//     // dataFim   : yup.date(),
-//     // uo: yup.string()
-// });
-
-
-
-// let progressCreated = false;
-
+let raw = {};
 
 function ValidateData(data) {
     let vazio = 0;
 
     Object.keys(data).forEach((item) => {
-        // console.log('it=' + item + data[item])
         if (!data[item]) {
             vazio++
         }
         else {
             if (item === 'codUnidadeOrcamentaria') {
                 if (data[item] !== 'true') {
-                    raw = {...raw, [item]  : data[item]   }         
+                    raw = { ...raw, [item]: data[item] }
                 }
             }
-            else raw = {...raw, [item]  : data[item]   }
+            else raw = { ...raw, [item]: data[item] }
         }
     })
 
@@ -43,35 +29,23 @@ function ValidateData(data) {
         alert('Informe ao menos um campo')
 
     }
-    else{ 
-        raw = {...raw, 'size': 1000}  //   default = 20 
-        prepareData(raw); 
-}
-
-
+    else {
+        raw = { ...raw, 'size': 1000 }  //   default = 20 
+        prepareData(raw);
+    }
 }
 
 function prepareData(raw) {
     GridDiaria(raw)
-     
-     
 }
 
-
-
-
-
 function Header() {
-    const { register, handleSubmit} = useForm()
-        // resolver: yupResolver(schema)
-    // });
-    const onSubmit = data => { ValidateData(data)  }
-
-   
+    const { register, handleSubmit } = useForm()
+    const onSubmit = data => { ValidateData(data) }
 
     return (
         <Container>
-            <h1>Header</h1>
+            <h1>Consulta Diarias</h1>
             <Form onSubmit={handleSubmit(onSubmit)}>
                 <Row  >
                     <Col xl={2} lg={3} md={3} sm={4} >
@@ -91,11 +65,9 @@ function Header() {
                             <Form.Label>Exercicio</Form.Label>
                             <input
                                 type="number"
-                                // defaultValue={0}
                                 placeholder="exercicio"
                                 {...register("codExercicio")} />
                         </Form.Group>
-                        {/* {errors.exercicio && <p>{errors.codExercicio.message}</p>} */}
                     </Col>
                 </Row>
                 <Row>
@@ -120,7 +92,6 @@ function Header() {
                             </select>
                         </Form.Group>
                     </Col>
-
                 </Row>
                 <Button className="mb-3" variant="primary" type="submit">
                     Consultar
@@ -137,6 +108,3 @@ function Header() {
 }
 
 export default Header;
-
-
-// xs={12} sm={2} md={2} lg={4}
