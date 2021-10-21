@@ -27,14 +27,14 @@ const columnsName = [
         selector: 'nomeCredor',
         sortable: true,
         wrap: true,
-        grow: 2
+        // grow: 2
     },
     {
         name: 'DESTINO',
         selector: 'localidade',
         sortable: true,
         wrap: true,
-        grow: 2
+        // grow: 2
     },
     {
         name: 'SAIDA',
@@ -69,24 +69,46 @@ const columnsName = [
         selector: 'motivo',
         sortable: true,
         wrap: true,
-        grow: 4
+        grow: 7
     },
     {
         name: 'ORGÂO',
         selector: 'descUnidadeOrcamentaria',
         sortable: true,
         wrap: true,
-        grow: 2
+        // grow: 2
     },
     {
         name: 'CARGO',
         selector: 'cargo',
         sortable: true,
         wrap: true,
-        grow: 2
+        // grow: 2
     },
     
 ]
+const customStyles = {
+    rows: {
+        style: {
+            minHeight: '105px', // override the row height
+            marginTop: '3px',
+            marginBottom: '5px',
+        
+        },
+    },
+    headCells: {
+        style: {
+            paddingLeft: '8px', // override the cell padding for head cells
+            paddingRight: '8px',
+        },
+    },
+    cells: {
+        style: {
+            paddingLeft: '8px', // override the cell padding for data cells
+            paddingRight: '8px',
+        },
+    },
+};
 
 
 
@@ -139,6 +161,8 @@ function RenderGridDiaria() {
                     columns={columnsName}
                     data={data}
                     title='Diarias concedidas'
+                    // dense='true'
+                    customStyles={customStyles} 
                     pagination
                     striped true
                     paginationComponentOptions={paginationOptions}
